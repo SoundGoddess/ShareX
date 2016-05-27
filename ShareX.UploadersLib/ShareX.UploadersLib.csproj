@@ -121,9 +121,12 @@
   <ItemGroup>
     <Compile Include="APIKeys\APIKeys.cs" />
     <Compile Include="APIKeys\APIKeysLocal.cs" />
+    <Compile Include="AudioUploaders\Clypit.cs" />
+    <Compile Include="BaseServices\AudioUploaderService.cs" />
     <Compile Include="BaseServices\FileUploaderService.cs" />
     <Compile Include="BaseServices\IGenericUploaderService.cs" />
     <Compile Include="BaseServices\IUploaderService.cs" />
+    <Compile Include="BaseUploaders\AudioUploader.cs" />
     <Compile Include="BaseUploaders\GenericUploader.cs" />
     <Compile Include="FileUploaders\AmazonS3Region.cs" />
     <Compile Include="FileUploaders\AmazonS3Settings.cs" />
@@ -932,6 +935,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Favicons\Lithiio.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Favicons\Clypit.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

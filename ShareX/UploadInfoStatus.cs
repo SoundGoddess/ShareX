@@ -37,12 +37,14 @@ namespace ShareX
         public bool IsThumbnailURLExist { get; private set; }
         public bool IsDeletionURLExist { get; private set; }
         public bool IsImageURL { get; private set; }
+        public bool IsAudioURL { get; private set; }
         public bool IsTextURL { get; private set; }
         public bool IsFilePathValid { get; private set; }
         public bool IsFileExist { get; private set; }
         public bool IsThumbnailFilePathValid { get; private set; }
         public bool IsThumbnailFileExist { get; private set; }
         public bool IsImageFile { get; private set; }
+        public bool IsAudioFile { get; private set; }
         public bool IsTextFile { get; private set; }
 
         public UploadInfoStatus(TaskInfo info)
@@ -61,6 +63,7 @@ namespace ShareX
                 IsDeletionURLExist = !string.IsNullOrEmpty(Info.Result.DeletionURL);
                 IsImageURL = IsURLExist && Helpers.IsImageFile(Info.Result.URL);
                 IsTextURL = IsURLExist && Helpers.IsTextFile(Info.Result.URL);
+                IsAudioURL = IsURLExist && Helpers.IsAudioFile(Info.Result.URL);
             }
 
             IsFilePathValid = !string.IsNullOrEmpty(Info.FilePath) && Path.HasExtension(Info.FilePath);
@@ -68,6 +71,7 @@ namespace ShareX
             IsThumbnailFilePathValid = !string.IsNullOrEmpty(Info.ThumbnailFilePath) && Path.HasExtension(Info.ThumbnailFilePath);
             IsThumbnailFileExist = IsThumbnailFilePathValid && File.Exists(Info.ThumbnailFilePath);
             IsImageFile = IsFileExist && Helpers.IsImageFile(Info.FilePath);
+            IsAudioFile = IsFileExist && Helpers.IsAudioFile(Info.FilePath);
             IsTextFile = IsFileExist && Helpers.IsTextFile(Info.FilePath);
         }
     }

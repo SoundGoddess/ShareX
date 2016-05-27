@@ -32,6 +32,7 @@ namespace ShareX.HelpersLib
         Default,
         File,
         Image,
+        Audio,
         Text,
         URL
     }

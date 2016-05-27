@@ -41,7 +41,7 @@ namespace ShareX
         public TaskSettings TaskSettings { get; private set; }
         public bool IsDefault { get; private set; }
 
-        private ToolStripDropDownItem tsmiImageFileUploaders, tsmiTextFileUploaders;
+        private ToolStripDropDownItem tsmiImageFileUploaders, tsmiTextFileUploaders, tsmiAudioFileUploaders;
         private bool loaded;
 
         public TaskSettingsForm(TaskSettings hotkeySetting, bool isDefault = false)
@@ -81,6 +81,9 @@ namespace ShareX
             }, cmsTask);
             AddMultiEnumItemsContextMenu<AfterCaptureTasks>(x => TaskSettings.AfterCaptureJob = TaskSettings.AfterCaptureJob.Swap(x), cmsAfterCapture);
             AddMultiEnumItemsContextMenu<AfterUploadTasks>(x => TaskSettings.AfterUploadJob = TaskSettings.AfterUploadJob.Swap(x), cmsAfterUpload);
+
+
+
             // Destinations -> Image uploader
             AddEnumItems<ImageDestination>(x =>
             {
@@ -101,6 +104,30 @@ namespace ShareX
                 TaskSettings.ImageFileDestination = x;
                 tsmiImageFileUploaders.PerformClick();
             }, tsmiImageFileUploaders);
+
+
+
+            // Destinations -> Audio uploader
+            AddEnumItems<AudioDestination>(x => {
+                TaskSettings.AudioDestination = x;
+                // if click on "folder" with file destinations then set AudioFileDestination and check it
+                if (x == AudioDestination.FileUploader) {
+                    SetEnumChecked(TaskSettings.AudioFileDestination, tsmiAudioFileUploaders);
+                }
+                else // if click not on "folder" with destinations then uncheck file destinations
+                {
+                    MainForm.Uncheck(tsmiAudioFileUploaders);
+                }
+            }, tsmiAudioUploaders);
+            tsmiAudioFileUploaders = (ToolStripDropDownItem)tsmiAudioUploaders.DropDownItems[tsmiAudioUploaders.DropDownItems.Count - 1];
+            AddEnumItems<FileDestination>(x => {
+                TaskSettings.AudioFileDestination = x;
+                tsmiAudioFileUploaders.PerformClick();
+            }, tsmiAudioFileUploaders);
+
+
+
+
             // Destinations -> Text uploader
             AddEnumItems<TextDestination>(x =>
             {
@@ -116,6 +143,8 @@ namespace ShareX
                 }
             }, tsmiTextUploaders);
             tsmiTextFileUploaders = (ToolStripDropDownItem)tsmiTextUploaders.DropDownItems[tsmiTextUploaders.DropDownItems.Count - 1];
+
+
             AddEnumItems<FileDestination>(x =>
             {
                 TaskSettings.TextFileDestination = x;
@@ -564,6 +593,11 @@ namespace ShareX
             string imageUploader = TaskSettings.ImageDestination == ImageDestination.FileUploader ?
                 TaskSettings.ImageFileDestination.GetLocalizedDescription() : TaskSettings.ImageDestination.GetLocalizedDescription();
             tsmiImageUploaders.Text = string.Format(Resources.TaskSettingsForm_UpdateUploaderMenuNames_Image_uploader___0_, imageUploader);
+
+            string audioUploader = TaskSettings.AudioDestination == AudioDestination.FileUploader ?
+                TaskSettings.AudioFileDestination.GetLocalizedDescription() : TaskSettings.AudioDestination.GetLocalizedDescription();
+            // todo: fix the reference below
+            tsmiAudioUploaders.Text = string.Format("test me", audioUploader);
 
             string textUploader = TaskSettings.TextDestination == TextDestination.FileUploader ?
                 TaskSettings.TextFileDestination.GetLocalizedDescription() : TaskSettings.TextDestination.GetLocalizedDescription();
@@ -1161,6 +1195,10 @@ namespace ShareX
         {
             TaskSettings.UseDefaultToolsSettings = chkUseDefaultToolsSettings.Checked;
             UpdateDefaultSettingVisibility();
+        }
+        
+        private void cmsAfterCapture_Opening(object sender, System.ComponentModel.CancelEventArgs e) {
+
         }
 
         #endregion Tools

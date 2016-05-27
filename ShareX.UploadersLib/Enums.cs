@@ -81,6 +81,17 @@ namespace ShareX.UploadersLib
         FileUploader // Localized
     }
 
+
+    [Description("Audio uploaders"), DefaultValue(Clypit)]
+    public enum AudioDestination {
+        [Description("Clyp.it")]
+        Clypit,
+        CustomAudioUploader, // Localized
+        FileUploader // Localized
+    }
+
+
+
     [Description("File uploaders"), DefaultValue(Dropbox)]
     public enum FileDestination
     {

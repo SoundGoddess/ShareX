@@ -89,6 +89,7 @@
             this.tsddbDestinations = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsmiImageUploaders = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiTextUploaders = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAudioUploaders = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiFileUploaders = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiURLShorteners = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiURLSharingServices = new System.Windows.Forms.ToolStripMenuItem();
@@ -238,6 +239,7 @@
             this.timerTraySingleClick = new System.Windows.Forms.Timer(this.components);
             this.pTips = new System.Windows.Forms.Panel();
             this.lblTips = new System.Windows.Forms.Label();
+            this.tsmiTrayAudioUploaders = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.scMain)).BeginInit();
             this.scMain.Panel1.SuspendLayout();
             this.scMain.Panel2.SuspendLayout();
@@ -386,6 +388,7 @@
             this.tsMain.Name = "tsMain";
             this.tsMain.ShowItemToolTips = false;
             this.tsMain.TabStop = true;
+            this.tsMain.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.tsMain_ItemClicked);
             // 
             // tsddbCapture
             // 
@@ -716,6 +719,7 @@
             this.tsddbDestinations.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiImageUploaders,
             this.tsmiTextUploaders,
+            this.tsmiAudioUploaders,
             this.tsmiFileUploaders,
             this.tsmiURLShorteners,
             this.tsmiURLSharingServices,
@@ -737,6 +741,13 @@
             this.tsmiTextUploaders.Image = global::ShareX.Properties.Resources.notebook;
             this.tsmiTextUploaders.Name = "tsmiTextUploaders";
             resources.ApplyResources(this.tsmiTextUploaders, "tsmiTextUploaders");
+            this.tsmiTextUploaders.Click += new System.EventHandler(this.tsmiTextUploaders_Click);
+            // 
+            // tsmiAudioUploaders
+            // 
+            this.tsmiAudioUploaders.Image = global::ShareX.Properties.Resources.audio;
+            this.tsmiAudioUploaders.Name = "tsmiAudioUploaders";
+            resources.ApplyResources(this.tsmiAudioUploaders, "tsmiAudioUploaders");
             // 
             // tsmiFileUploaders
             // 
@@ -1296,6 +1307,7 @@
             this.cmsTray.Name = "cmsTray";
             resources.ApplyResources(this.cmsTray, "cmsTray");
             this.cmsTray.Closed += new System.Windows.Forms.ToolStripDropDownClosedEventHandler(this.cmsTray_Closed);
+            this.cmsTray.Opening += new System.ComponentModel.CancelEventHandler(this.cmsTray_Opening);
             this.cmsTray.Opened += new System.EventHandler(this.cmsTray_Opened);
             // 
             // tsmiTrayCapture
@@ -1626,6 +1638,7 @@
             this.tsmiTrayDestinations.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiTrayImageUploaders,
             this.tsmiTrayTextUploaders,
+            this.tsmiTrayAudioUploaders,
             this.tsmiTrayFileUploaders,
             this.tsmiTrayURLShorteners,
             this.tsmiTrayURLSharingServices,
@@ -1847,6 +1860,12 @@
             this.lblTips.Name = "lblTips";
             this.lblTips.UseMnemonic = false;
             this.lblTips.Click += new System.EventHandler(this.lblTips_Click);
+            // 
+            // tsmiTrayAudioUploaders
+            // 
+            this.tsmiTrayAudioUploaders.Image = global::ShareX.Properties.Resources.audio;
+            this.tsmiTrayAudioUploaders.Name = "tsmiTrayAudioUploaders";
+            resources.ApplyResources(this.tsmiTrayAudioUploaders, "tsmiTrayAudioUploaders");
             // 
             // MainForm
             // 
@@ -2093,5 +2112,7 @@
         private System.Windows.Forms.Label lblTips;
         private System.Windows.Forms.ToolStripMenuItem tsmiTextCapture;
         private System.Windows.Forms.ToolStripMenuItem tsmiTrayTextCapture;
+        private System.Windows.Forms.ToolStripMenuItem tsmiAudioUploaders;
+        private System.Windows.Forms.ToolStripMenuItem tsmiTrayAudioUploaders;
     }
 }

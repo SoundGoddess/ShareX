@@ -32,6 +32,7 @@ namespace ShareX.UploadersLib
     public static class UploaderFactory
     {
         public static Dictionary<ImageDestination, ImageUploaderService> ImageUploaderServices { get; } = CacheServices<ImageDestination, ImageUploaderService>();
+        public static Dictionary<AudioDestination, AudioUploaderService> AudioUploaderServices { get; } = CacheServices<AudioDestination, AudioUploaderService>();
         public static Dictionary<TextDestination, TextUploaderService> TextUploaderServices { get; } = CacheServices<TextDestination, TextUploaderService>();
         public static Dictionary<FileDestination, FileUploaderService> FileUploaderServices { get; } = CacheServices<FileDestination, FileUploaderService>();
         public static Dictionary<UrlShortenerType, URLShortenerService> URLShortenerServices { get; } = CacheServices<UrlShortenerType, URLShortenerService>();

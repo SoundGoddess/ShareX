@@ -50,8 +50,7 @@ using System.Windows.Forms;
 
 namespace ShareX.HelpersLib
 {
-    public static class Helpers
-    {
+    public static class Helpers {
         public const string Numbers = "0123456789"; // 48 ... 57
         public const string AlphabetCapital = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // 65 ... 90
         public const string Alphabet = "abcdefghijklmnopqrstuvwxyz"; // 97 ... 122
@@ -64,6 +63,7 @@ namespace ShareX.HelpersLib
 
         public static readonly string[] ImageFileExtensions = new string[] { "jpg", "jpeg", "png", "gif", "bmp", "ico", "tif", "tiff" };
         public static readonly string[] TextFileExtensions = new string[] { "txt", "log", "nfo", "c", "cpp", "cc", "cxx", "h", "hpp", "hxx", "cs", "vb", "html", "htm", "xhtml", "xht", "xml", "css", "js", "php", "bat", "java", "lua", "py", "pl", "cfg", "ini" };
+        public static readonly string[] AudioFileExtensions = new string[] { "mp3", "ogg", "m4a", "wav", "aiff", "aif", "3gpp" };
 
         public static readonly Version OSVersion = Environment.OSVersion.Version;
 
@@ -145,6 +145,11 @@ namespace ShareX.HelpersLib
             return false;
         }
 
+        public static bool IsAudioFile(string filePath) 
+        {
+            return IsValidFile(filePath, AudioFileExtensions);
+        }
+
         public static bool IsImageFile(string filePath)
         {
             return IsValidFile(filePath, ImageFileExtensions);
@@ -167,6 +172,10 @@ namespace ShareX.HelpersLib
                 return EDataType.Text;
             }
 
+            if (IsAudioFile(filePath)) 
+            {
+                return EDataType.Audio;
+            }
             return EDataType.File;
         }
 

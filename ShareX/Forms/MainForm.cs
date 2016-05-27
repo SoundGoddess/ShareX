@@ -45,7 +45,8 @@ namespace ShareX
 
         private bool forceClose, trayMenuSaveSettings = true, firstUpdateCheck = true;
         private UploadInfoManager uim;
-        private ToolStripDropDownItem tsmiImageFileUploaders, tsmiTrayImageFileUploaders, tsmiTextFileUploaders, tsmiTrayTextFileUploaders;
+        private ToolStripDropDownItem tsmiImageFileUploaders, tsmiTrayImageFileUploaders, tsmiAudioFileUploaders, tsmiTrayAudioFileUploaders,
+            tsmiTextFileUploaders, tsmiTrayTextFileUploaders;
         private System.Threading.Timer updateTimer = null;
         private static readonly object updateTimerLock = new object();
 
@@ -90,6 +91,8 @@ namespace ShareX
                 tsddbAfterCaptureTasks, tsmiTrayAfterCaptureTasks);
             AddMultiEnumItems<AfterUploadTasks>(x => Program.DefaultTaskSettings.AfterUploadJob = Program.DefaultTaskSettings.AfterUploadJob.Swap(x),
                 tsddbAfterUploadTasks, tsmiTrayAfterUploadTasks);
+
+
             AddEnumItems<ImageDestination>(x =>
             {
                 Program.DefaultTaskSettings.ImageDestination = x;
@@ -111,6 +114,29 @@ namespace ShareX
                 tsmiImageFileUploaders.PerformClick();
                 tsmiTrayImageFileUploaders.PerformClick();
             }, tsmiImageFileUploaders, tsmiTrayImageFileUploaders);
+
+
+
+            AddEnumItems<AudioDestination>(x => {
+                Program.DefaultTaskSettings.AudioDestination = x;
+
+                if (x == AudioDestination.FileUploader) {
+                    SetEnumChecked(Program.DefaultTaskSettings.AudioFileDestination, tsmiAudioFileUploaders, tsmiTrayAudioFileUploaders);
+                }
+                else {
+                    Uncheck(tsmiAudioFileUploaders, tsmiTrayAudioFileUploaders);
+                }
+            }, tsmiAudioUploaders, tsmiTrayAudioUploaders);
+            tsmiAudioFileUploaders = (ToolStripDropDownItem)tsmiAudioUploaders.DropDownItems[tsmiAudioUploaders.DropDownItems.Count - 1];
+            tsmiTrayAudioFileUploaders = (ToolStripDropDownItem)tsmiTrayAudioUploaders.DropDownItems[tsmiTrayAudioUploaders.DropDownItems.Count - 1];
+            AddEnumItems<FileDestination>(x => {
+                Program.DefaultTaskSettings.AudioFileDestination = x;
+                tsmiAudioFileUploaders.PerformClick();
+                tsmiTrayAudioFileUploaders.PerformClick();
+            }, tsmiAudioFileUploaders, tsmiTrayAudioFileUploaders);
+
+
+
             AddEnumItems<TextDestination>(x =>
             {
                 Program.DefaultTaskSettings.TextDestination = x;
@@ -700,6 +726,10 @@ Program.Settings.TrayMiddleClickAction.GetLocalizedDescription());
             string textUploader = Program.DefaultTaskSettings.TextDestination == TextDestination.FileUploader ?
                 Program.DefaultTaskSettings.TextFileDestination.GetLocalizedDescription() : Program.DefaultTaskSettings.TextDestination.GetLocalizedDescription();
             tsmiTextUploaders.Text = tsmiTrayTextUploaders.Text = string.Format(Resources.TaskSettingsForm_UpdateUploaderMenuNames_Text_uploader___0_, textUploader);
+
+            string audioUploader = Program.DefaultTaskSettings.AudioDestination == AudioDestination.FileUploader ?
+                Program.DefaultTaskSettings.AudioFileDestination.GetLocalizedDescription() : Program.DefaultTaskSettings.AudioDestination.GetLocalizedDescription();
+            //tsmiAudioUploaders.Text = tsmiTrayAudioUploaders.Text = string.Format(Resources.tas, audioUploader);
 
             tsmiFileUploaders.Text = tsmiTrayFileUploaders.Text = string.Format(Resources.TaskSettingsForm_UpdateUploaderMenuNames_File_uploader___0_,
                 Program.DefaultTaskSettings.FileDestination.GetLocalizedDescription());
@@ -2459,6 +2489,18 @@ Program.Settings.TrayMiddleClickAction.GetLocalizedDescription());
         private void tsmiTrayRectangleLight_Click(object sender, EventArgs e)
         {
             CaptureRectangleLight(null, false);
+        }
+
+        private void tsMain_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
+
+        }
+
+        private void tsmiTextUploaders_Click(object sender, EventArgs e) {
+
+        }
+
+        private void cmsTray_Opening(object sender, System.ComponentModel.CancelEventArgs e) {
+
         }
 
         private void tsmiTrayRectangleTransparent_Click(object sender, EventArgs e)

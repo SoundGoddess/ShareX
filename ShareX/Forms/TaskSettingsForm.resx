@@ -486,6 +486,12 @@
   <data name="tsmiTextUploaders.Text" xml:space="preserve">
     <value>Text uploaders</value>
   </data>
+  <data name="tsmiAudioUploaders.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 22</value>
+  </data>
+  <data name="tsmiAudioUploaders.Text" xml:space="preserve">
+    <value>Audio uploaders</value>
+  </data>
   <data name="tsmiFileUploaders.Size" type="System.Drawing.Size, System.Drawing">
     <value>181, 22</value>
   </data>
@@ -505,7 +511,7 @@
     <value>URL sharing services</value>
   </data>
   <data name="cmsDestinations.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 114</value>
+    <value>182, 158</value>
   </data>
   <data name="&gt;&gt;cmsDestinations.Name" xml:space="preserve">
     <value>cmsDestinations</value>
@@ -1683,6 +1689,9 @@
   <data name="&gt;&gt;tpImage.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="btnCaptureCustomRegionSelectRectangle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="btnCaptureCustomRegionSelectRectangle.Location" type="System.Drawing.Point, System.Drawing">
     <value>232, 263</value>
   </data>
@@ -1709,6 +1718,9 @@
   </data>
   <data name="lblCaptureCustomRegion.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="lblCaptureCustomRegion.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="lblCaptureCustomRegion.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 232</value>
@@ -3009,6 +3021,9 @@
   <data name="lblAutoIncrementNumber.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="lblAutoIncrementNumber.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="lblAutoIncrementNumber.Location" type="System.Drawing.Point, System.Drawing">
     <value>304, 189</value>
   </data>
@@ -3035,6 +3050,9 @@
   </data>
   <data name="cbRegionCaptureUseWindowPattern.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="cbRegionCaptureUseWindowPattern.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="cbRegionCaptureUseWindowPattern.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 136</value>
@@ -4311,6 +4329,9 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>774, 392</value>
   </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
@@ -4350,6 +4371,30 @@
   <data name="&gt;&gt;tsmiURLSharingServices.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;chWatchFolderFolderPath.Name" xml:space="preserve">
+    <value>chWatchFolderFolderPath</value>
+  </data>
+  <data name="&gt;&gt;chWatchFolderFolderPath.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chWatchFolderFilter.Name" xml:space="preserve">
+    <value>chWatchFolderFilter</value>
+  </data>
+  <data name="&gt;&gt;chWatchFolderFilter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chWatchFolderIncludeSubdirectories.Name" xml:space="preserve">
+    <value>chWatchFolderIncludeSubdirectories</value>
+  </data>
+  <data name="&gt;&gt;chWatchFolderIncludeSubdirectories.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsmiAudioUploaders.Name" xml:space="preserve">
+    <value>tsmiAudioUploaders</value>
+  </data>
+  <data name="&gt;&gt;tsmiAudioUploaders.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;chActionsName.Name" xml:space="preserve">
     <value>chActionsName</value>
   </data>
@@ -4372,24 +4417,6 @@
     <value>chActionsExtensions</value>
   </data>
   <data name="&gt;&gt;chActionsExtensions.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chWatchFolderFolderPath.Name" xml:space="preserve">
-    <value>chWatchFolderFolderPath</value>
-  </data>
-  <data name="&gt;&gt;chWatchFolderFolderPath.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chWatchFolderFilter.Name" xml:space="preserve">
-    <value>chWatchFolderFilter</value>
-  </data>
-  <data name="&gt;&gt;chWatchFolderFilter.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chWatchFolderIncludeSubdirectories.Name" xml:space="preserve">
-    <value>chWatchFolderIncludeSubdirectories</value>
-  </data>
-  <data name="&gt;&gt;chWatchFolderIncludeSubdirectories.Type" xml:space="preserve">
     <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

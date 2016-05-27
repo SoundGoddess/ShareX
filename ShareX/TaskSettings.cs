@@ -58,6 +58,8 @@ namespace ShareX
         public bool UseDefaultDestinations = true;
         public ImageDestination ImageDestination = ImageDestination.Imgur;
         public FileDestination ImageFileDestination = FileDestination.Dropbox;
+        public AudioDestination AudioDestination = AudioDestination.Clypit;
+        public FileDestination AudioFileDestination = FileDestination.Dropbox;
         public TextDestination TextDestination = TextDestination.Pastebin;
         public FileDestination TextFileDestination = FileDestination.Dropbox;
         public FileDestination FileDestination = FileDestination.Dropbox;
@@ -198,6 +200,8 @@ namespace ShareX
                 {
                     ImageDestination = defaultTaskSettings.ImageDestination;
                     ImageFileDestination = defaultTaskSettings.ImageFileDestination;
+                    AudioDestination = defaultTaskSettings.AudioDestination;
+                    AudioFileDestination = defaultTaskSettings.AudioFileDestination;
                     TextDestination = defaultTaskSettings.TextDestination;
                     TextFileDestination = defaultTaskSettings.TextFileDestination;
                     FileDestination = defaultTaskSettings.FileDestination;
@@ -248,6 +252,8 @@ namespace ShareX
             {
                 case EDataType.Image:
                     return ImageFileDestination;
+                case EDataType.Audio:
+                    return AudioFileDestination;
                 case EDataType.Text:
                     return TextFileDestination;
                 default:
@@ -427,6 +433,10 @@ namespace ShareX
         Editor("System.Windows.Forms.Design.StringCollectionEditor,System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
         public List<string> ImageExtensions { get; set; }
 
+        [Category("Upload"), Description("Files with these file extensions will be uploaded using audio uploader."),
+        Editor("System.Windows.Forms.Design.StringCollectionEditor,System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
+        public List<string> AudioExtensions { get; set; }
+
         [Category("Upload"), DefaultValue(false), Description("Copy URL before start upload. Only works for FTP, FTPS, SFTP and Dropbox public URLs.")]
         public bool EarlyCopyURL { get; set; }
 
@@ -518,6 +528,7 @@ namespace ShareX
         {
             this.ApplyDefaultPropertyValues();
             ImageExtensions = Helpers.ImageFileExtensions.ToList();
+            AudioExtensions = Helpers.AudioFileExtensions.ToList();
             TextExtensions = Helpers.TextFileExtensions.ToList();
         }
     }
